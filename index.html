@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>PELICULAS</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
+  <style>
+    body {
+      background-color: #000;
+      font-size: 0px;
+      color: red;
+      font-family: 'Lato', sans-serif;
+      margin: 0;
+    }
+
+    .padre {
+      width: 100%;
+      padding: 0px;
+      text-align: center;
+    }
+
+    .padre img.img_titulo1 {
+      width: 40%;
+      height: auto;
+      margin: 20px 0;
+    }
+
+    .barra1, .barra2 {
+      border: 1px solid #393939;
+      width: 90%;
+      margin: 10px auto;
+    }
+
+    .buscador {
+      width: 50%;
+      padding: 10px;
+      font-size: 16px;
+      background-color: #fff;
+      color: #000;
+      border: 2px solid #74EAFF;
+      border-radius: 8px;
+    }
+
+    .hijo {
+      display: inline-block;
+      width: 25%;
+      padding: 10px;
+    }
+
+    .hijo samp {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .caratula {
+      width: 100%;
+      border: 2px solid grey;
+      border-radius: 8px;
+    }
+
+    .modalmask {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 99999;
+      opacity: 0;
+      transition: opacity 300ms ease-in;
+      pointer-events: none;
+      overflow-y: auto;
+    }
+
+    .modalmask:target {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modalbox {
+      width: 80%;
+      max-width: 600px;
+      margin: 0px auto;
+      padding: 20px;
+      background: #000;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+
+    .btn-cerrar {
+      float: right;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      color: grey;
+      border: 2px solid grey;
+      padding: 5px 10px;
+      border-radius: 8px;
+      background: #000;
+    }
+
+   .modalbox h2, .modalbox a, .modalbox p {
+      color: white;
+      font-size: 12px;
+    }
+
+    .modalbox img.img_peli {
+      width: 100%;
+      height: auto;
+      max-width: 225px;
+      margin: 20px 0;
+      border: none;
+    }
+
+    .nieto {
+      background-color: #393939;
+      border: 3px solid #393939;
+      border-radius: 8px;
+      margin: 20px 0;
+      padding: 20px;
+    }
+
+    .opcion {
+      width: 25%;
+      background-size: cover;
+      border: 2px solid white;
+      padding: 10px 0;
+      margin: 0 1%;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .uno { background-image: url("https://i.ibb.co/ZBvwS06/Opcion1.png"); }
+    .dos { background-image: url("https://i.ibb.co/XtX6mZM/Opcion2.png"); }
+    .tres { background-image: url("https://i.ibb.co/TBmzLJp/Opcion3.png"); }
+    .vidoza { background-image: url("https://i.ibb.co/mGMF46S/Opcion4.png"); }
+
+    .servidores {
+      width: 90%;
+      height: auto;
+      background-color: #393939;
+      border: 2px solid #393939;
+      margin: 0 auto 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="padre">
+    <center>
+      <img class="img_titulo1" src="https://raw.githubusercontent.com/Sherpa47/Imagenes/main/Cabeceras/Estrenos.png" alt="Estrenos">
+    </center>
+    <hr class="barra1">
+    <input type="text" id="search" class="boton buscador" placeholder="Buscador" autofocus=""><br>
+    <br>
+    <hr class="barra1">
+    
+    
+    <div class="hijo">
+      <p><samp>Deadpool y Lobezno</samp></p><a href="#demo14"><img class="boton caratula" src="https://pics.filmaffinity.com/deadpool_wolverine-864471588-mmed.jpg"></a>
+    </div>
+    <div id="demo14" class="modalmask" style="color:#000000;">
+      <div align="center" class="modalbox movedown" style="width:auto;">
+        <h2>Deadpool y Lobezno</h2><a href="#" class="btn-cerrar">X</a>
+        <hr class="barra1">
+        <img class="img_peli" src="https://pics.filmaffinity.com/deadpool_wolverine-864471588-mmed.jpg">
+        <hr class="barra1">
+        
+        <a style="font-size:14px; font-family:'Kanit', sans-serif; margin-right: 20px;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z" fill="white"></path>
+    </svg> 2024
+</a>
+<a style="font-size:14px; font-family:'Kanit', sans-serif; margin-right: 20px;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <g fill="none">
+            <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle>
+            <path d="M15 16l-2.414-2.414A2 2 0 0 1 12 12.172V6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+    </svg> 2h 7m
+</a>
+<a style="font-size:14px; font-family:'Kanit', sans-serif;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <path d="M20 8h-5.612l1.123-3.367c.202-.608.1-1.282-.275-1.802S14.253 2 13.612 2H12c-.297 0-.578.132-.769.36L6.531 8H4c-1.103 0-2 .897-2 2v9c0 1.103.897 2 2 2h13.307a2.01 2.01 0 0 0 1.873-1.298l2.757-7.351A1 1 0 0 0 22 12v-2c0-1.103-.897-2-2-2zM4 10h2v9H4v-9zm16 1.819L17.307 19H8V9.362L12.468 4h1.146l-1.562 4.683A.998.998 0 0 0 13 10h7v1.819z" fill="white"></path>
+    </svg> 7´0
+</a>
+        
+        <hr class="barra1">
+        <div class="nieto">
+          <img class="boton servidores" src="https://i.ibb.co/tP0BmYD/cooltext375654328393844.png" alt="cooltext375654328393844">
+          <hr class="barra2">
+          <a href="magnet:?xt=urn:btih:a31e44ef12ed35ca91319048075929cc7b560a6c" target="_blank" class="opcion uno"></a>
+          <a href="magnet:?xt=urn:btih:37ca7cec8639d05ebed7836ff3e39f5f992c8474" target="_blank" class="opcion dos"></a>
+          <a href="magnet:?xt=urn:btih:36967afdf49045cd8d3fe6edd91222904c68d5fc" target="_blank" class="opcion tres"></a>
+        </div>
+        <div class="nieto">
+          <h2>Sinopsis</h2>
+          <hr class="barra2">
+          <a>Un apático Wade Wilson se afana en la vida civil tras dejar atrás sus días como Deadpool, un mercenario moralmente flexible. Pero cuando su mundo natal se enfrenta a una amenaza existencial, Wade debe volver a vestirse a regañadientes con un Lobezno aún más reacio a ayudar.</a>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="hijo">
+      <p><samp>El ministerio de la Guerra Sucia</samp></p><a href="#demo13"><img class="boton caratula" src="https://pics.filmaffinity.com/the_ministry_of_ungentlemanly_warfare-905775707-mmed.jpg" alt="oppenheimer-828933592-mmed"></a>
+    </div>
+    <div id="demo13" class="modalmask" style="color:#000000;">
+      <div align="center" class="modalbox movedown" style="width:auto;">
+        <h2>El ministerio de la Guerra Sucia</h2><a href="#" class="btn-cerrar">X</a>
+        <hr class="barra1">
+        <img class="img_peli" src="https://pics.filmaffinity.com/the_ministry_of_ungentlemanly_warfare-905775707-mmed.jpg">
+        <hr class="barra1">
+        
+        <a style="font-size:14px; font-family:'Kanit', sans-serif; margin-right: 20px;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z" fill="white"></path>
+    </svg> 2024
+</a>
+<a style="font-size:14px; font-family:'Kanit', sans-serif; margin-right: 20px;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <g fill="none">
+            <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle>
+            <path d="M15 16l-2.414-2.414A2 2 0 0 1 12 12.172V6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+    </svg> 2h
+</a>
+<a style="font-size:14px; font-family:'Kanit', sans-serif;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <path d="M20 8h-5.612l1.123-3.367c.202-.608.1-1.282-.275-1.802S14.253 2 13.612 2H12c-.297 0-.578.132-.769.36L6.531 8H4c-1.103 0-2 .897-2 2v9c0 1.103.897 2 2 2h13.307a2.01 2.01 0 0 0 1.873-1.298l2.757-7.351A1 1 0 0 0 22 12v-2c0-1.103-.897-2-2-2zM4 10h2v9H4v-9zm16 1.819L17.307 19H8V9.362L12.468 4h1.146l-1.562 4.683A.998.998 0 0 0 13 10h7v1.819z" fill="white"></path>
+    </svg> 5´7
+</a>
+        
+        <hr class="barra1">
+        <div class="nieto">
+          <img class="boton servidores" src="https://i.ibb.co/tP0BmYD/cooltext375654328393844.png" alt="cooltext375654328393844">
+          <hr class="barra2">
+          <a href="magnet:?xt=urn:btih:82e985b6f96d3c00ea1d0f910decca07229db2e8" target="_blank" class="opcion uno"></a>
+          <a href="magnet:?xt=urn:btih:90348d536e0ce3ad4b3549aae891fb5fc08475c5" target="_blank" class="opcion dos"></a>
+          <a href="magnet:?xt=urn:btih:d0300f48ef5c412a72846dd7a7cfbe68726218ac" target="_blank" class="opcion tres"></a>
+        </div>
+        <div class="nieto">
+          <h2>Sinopsis</h2>
+          <hr class="barra2">
+          <a>El ejército británico recluta a un pequeño grupo de soldados de élite para atacar a los nazis detrás de las líneas enemigas durante la Segunda Guerra Mundial.</a>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="hijo">
+      <p><samp>Del revés 2 (Inside Out 2)</samp></p><a href="#demo12"><img class="boton caratula" src="https://pics.filmaffinity.com/inside_out_2-365634749-mmed.jpg" alt="oppenheimer-828933592-mmed"></a>
+    </div>
+    <div id="demo12" class="modalmask" style="color:#000000;">
+      <div align="center" class="modalbox movedown" style="width:auto;">
+        <h2>Del revés 2 (Inside Out 2)</h2><a href="#" class="btn-cerrar">X</a>
+        <hr class="barra1">
+        <img class="img_peli" src="https://pics.filmaffinity.com/inside_out_2-365634749-mmed.jpg">
+        <hr class="barra1">
+        
+        <a style="font-size:14px; font-family:'Kanit', sans-serif; margin-right: 20px;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z" fill="white"></path>
+    </svg> 2024
+</a>
+<a style="font-size:14px; font-family:'Kanit', sans-serif; margin-right: 20px;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <g fill="none">
+            <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle>
+            <path d="M15 16l-2.414-2.414A2 2 0 0 1 12 12.172V6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+    </svg> 1h 36m
+</a>
+<a style="font-size:14px; font-family:'Kanit', sans-serif;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <path d="M20 8h-5.612l1.123-3.367c.202-.608.1-1.282-.275-1.802S14.253 2 13.612 2H12c-.297 0-.578.132-.769.36L6.531 8H4c-1.103 0-2 .897-2 2v9c0 1.103.897 2 2 2h13.307a2.01 2.01 0 0 0 1.873-1.298l2.757-7.351A1 1 0 0 0 22 12v-2c0-1.103-.897-2-2-2zM4 10h2v9H4v-9zm16 1.819L17.307 19H8V9.362L12.468 4h1.146l-1.562 4.683A.998.998 0 0 0 13 10h7v1.819z" fill="white"></path>
+    </svg> 7´3
+</a>
+        
+        <hr class="barra1">
+        <div class="nieto">
+          <img class="boton servidores" src="https://i.ibb.co/tP0BmYD/cooltext375654328393844.png" alt="cooltext375654328393844">
+          <hr class="barra2">
+          <a href="magnet:?xt=urn:btih:3f5818f5160acaea6ae84daf2dbdcf654fe87944" target="_blank" class="opcion uno"></a>
+          <a href="magnet:?xt=urn:btih:2a653ab51057023befb98458a41b0958a31ce177" target="_blank" class="opcion dos"></a>
+          <a href="magnet:?xt=urn:btih:ab25962e0df84def8835a288d2991748a36be715" target="_blank" class="opcion tres"></a>
+        </div>
+        <div class="nieto">
+          <h2>Sinopsis</h2>
+          <hr class="barra2">
+          <a>Secuela de 'Inside Out'. Riley entra en la adolescencia y el Cuartel General de su cabeza sufre una repentina reforma para hacerle hueco a algo totalmente inesperado propio de la pubertad: ¡Nuevas emociones! Alegría, Tristeza, Ira, Miedo y Asco, con años de impecable gestión a sus espaldas (según ellos...) no saben muy bien qué sentir cuando aparece con enorme ímpetu Ansiedad. Y no viene sola: le acompañan envidia, vergüenza y aburrimiento.</a>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="hijo">
+      <p><samp>El reino del planeta de los simios</samp></p><a href="#demo11"><img class="boton caratula" src="https://pics.filmaffinity.com/kingdom_of_the_planet_of_the_apes-598062850-large.jpg" alt="oppenheimer-828933592-mmed"></a>
+    </div>
+    <div id="demo11" class="modalmask" style="color:#000000;">
+      <div align="center" class="modalbox movedown" style="width:auto;">
+        <h2>El reino del planeta de los simios</h2><a href="#" class="btn-cerrar">X</a>
+        <hr class="barra1">
+        <img class="img_peli" src="https://pics.filmaffinity.com/kingdom_of_the_planet_of_the_apes-598062850-large.jpg">
+        <hr class="barra1">
+        
+        <a style="font-size:14px; font-family:'Kanit', sans-serif; margin-right: 20px;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z" fill="white"></path>
+    </svg> 2024
+</a>
+<a style="font-size:14px; font-family:'Kanit', sans-serif; margin-right: 20px;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <g fill="none">
+            <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle>
+            <path d="M15 16l-2.414-2.414A2 2 0 0 1 12 12.172V6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+    </svg> 2h 15m
+</a>
+<a style="font-size:14px; font-family:'Kanit', sans-serif;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <path d="M20 8h-5.612l1.123-3.367c.202-.608.1-1.282-.275-1.802S14.253 2 13.612 2H12c-.297 0-.578.132-.769.36L6.531 8H4c-1.103 0-2 .897-2 2v9c0 1.103.897 2 2 2h13.307a2.01 2.01 0 0 0 1.873-1.298l2.757-7.351A1 1 0 0 0 22 12v-2c0-1.103-.897-2-2-2zM4 10h2v9H4v-9zm16 1.819L17.307 19H8V9.362L12.468 4h1.146l-1.562 4.683A.998.998 0 0 0 13 10h7v1.819z" fill="white"></path>
+    </svg> 6'1
+</a>
+        
+        <hr class="barra1">
+        <div class="nieto">
+          <img class="boton servidores" src="https://i.ibb.co/tP0BmYD/cooltext375654328393844.png" alt="cooltext375654328393844">
+          <hr class="barra2">
+          <a href="magnet:?xt=urn:btih:3f5818f5160acaea6ae84daf2dbdcf654fe87944" target="_blank" class="opcion uno"></a>
+          <a href="magnet:?xt=urn:btih:2a653ab51057023befb98458a41b0958a31ce177" target="_blank" class="opcion dos"></a>
+          <a href="magnet:?xt=urn:btih:ab25962e0df84def8835a288d2991748a36be715" target="_blank" class="opcion tres"></a>
+        </div>
+        <div class="nieto">
+          <h2>Sinopsis</h2>
+          <hr class="barra2">
+          <a>Ambientada varias generaciones en el futuro tras el reinado de César, en la que los simios son la especie dominante que vive en armonía y los humanos se han visto reducidos a vivir en la sombra. Mientras un nuevo y tiránico líder simio construye su imperio, un joven simio emprende un angustioso viaje que le llevará a cuestionarse todo lo que sabe sobre el pasado y a tomar decisiones que definirán el futuro de simios y humanos por igual.</a>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="hijo">
+      <p><samp>Furiosa: De la saga Mad Max</samp></p><a href="#demo10"><img class="boton caratula" src="https://pics.filmaffinity.com/furiosa_a_mad_max_saga-599306128-mmed.jpg" alt="oppenheimer-828933592-mmed"></a>
+    </div>
+    <div id="demo10" class="modalmask" style="color:#000000;">
+      <div align="center" class="modalbox movedown" style="width:auto;">
+        <h2>Furiosa: De la saga Mad Max</h2><a href="#" class="btn-cerrar">X</a>
+        <hr class="barra1">
+        <img class="img_peli" src="https://pics.filmaffinity.com/furiosa_a_mad_max_saga-599306128-mmed.jpg">
+        <hr class="barra1">
+        
+        <a style="font-size:14px; font-family:'Kanit', sans-serif; margin-right: 20px;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z" fill="white"></path>
+    </svg> 2024
+</a>
+<a style="font-size:14px; font-family:'Kanit', sans-serif; margin-right: 20px;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <g fill="none">
+            <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle>
+            <path d="M15 16l-2.414-2.414A2 2 0 0 1 12 12.172V6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+    </svg> 2h 28m
+</a>
+        
+<a style="font-size:14px; font-family:'Kanit', sans-serif;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <path d="M20 8h-5.612l1.123-3.367c.202-.608.1-1.282-.275-1.802S14.253 2 13.612 2H12c-.297 0-.578.132-.769.36L6.531 8H4c-1.103 0-2 .897-2 2v9c0 1.103.897 2 2 2h13.307a2.01 2.01 0 0 0 1.873-1.298l2.757-7.351A1 1 0 0 0 22 12v-2c0-1.103-.897-2-2-2zM4 10h2v9H4v-9zm16 1.819L17.307 19H8V9.362L12.468 4h1.146l-1.562 4.683A.998.998 0 0 0 13 10h7v1.819z" fill="white"></path>
+    </svg> 6'9
+</a>
+        
+        <hr class="barra1">
+        <div class="nieto">
+          <img class="boton servidores" src="https://i.ibb.co/tP0BmYD/cooltext375654328393844.png" alt="cooltext375654328393844">
+          <hr class="barra2">
+          <a href="magnet:?xt=urn:btih:67bdd6e1a55ed93a6470b332bd4269f2b528625f" target="_blank" class="opcion uno"></a>
+          <a href="magnet:?xt=urn:btih:44e074ea4568853086317d8453bcfba68c026228" target="_blank" class="opcion dos"></a>
+          <a href="magnet:?xt=urn:btih:fc388f797782ce6c9d3847fd62427180a2eac248" target="_blank" class="opcion tres"></a>
+        </div>
+        <div class="nieto">
+          <h2>Sinopsis</h2>
+          <hr class="barra2">
+          <a>Al caer el mundo, la joven Furiosa es arrebatada del 'Lugar Verde de Muchas Madres' y cae en manos de una horda de motoristas liderada por el Señor de la Guerra, Dementus. Arrasando el Páramo, se topan con la Ciudadela, presidida por Inmortal Joe. Mientras los dos tiranos luchan por el dominio, Furiosa debe sobrevivir a muchas pruebas mientras reúne los medios para encontrar el camino de vuelta a casa. Precuela de 'Mad Max: Furia en la carretera' (2015).</a>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="hijo">
+      <p><samp>Menudas piezas</samp></p><a href="#demo9"><img class="boton caratula" src="https://pics.filmaffinity.com/menudas_piezas-781090336-mmed.jpg" alt="oppenheimer-828933592-mmed"></a>
+    </div>
+    <div id="demo9" class="modalmask" style="color:#000000;">
+      <div align="center" class="modalbox movedown" style="width:auto;">
+        <h2>Menudas piezas</h2><a href="#" class="btn-cerrar">X</a>
+        <hr class="barra1">
+        <img class="img_peli" src="https://pics.filmaffinity.com/menudas_piezas-781090336-mmed.jpg">
+        <hr class="barra1">
+        
+                <a style="font-size:14px; font-family:'Kanit', sans-serif; margin-right: 20px;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z" fill="white"></path>
+    </svg> 2024
+</a>
+<a style="font-size:14px; font-family:'Kanit', sans-serif; margin-right: 20px;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <g fill="none">
+            <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle>
+            <path d="M15 16l-2.414-2.414A2 2 0 0 1 12 12.172V6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+    </svg> 1h 38m
+</a>
+        
+<a style="font-size:14px; font-family:'Kanit', sans-serif;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <path d="M20 8h-5.612l1.123-3.367c.202-.608.1-1.282-.275-1.802S14.253 2 13.612 2H12c-.297 0-.578.132-.769.36L6.531 8H4c-1.103 0-2 .897-2 2v9c0 1.103.897 2 2 2h13.307a2.01 2.01 0 0 0 1.873-1.298l2.757-7.351A1 1 0 0 0 22 12v-2c0-1.103-.897-2-2-2zM4 10h2v9H4v-9zm16 1.819L17.307 19H8V9.362L12.468 4h1.146l-1.562 4.683A.998.998 0 0 0 13 10h7v1.819z" fill="white"></path>
+    </svg> 5'7
+</a>
+        
+        <hr class="barra1">
+        <div class="nieto">
+          <img class="boton servidores" src="https://i.ibb.co/tP0BmYD/cooltext375654328393844.png" alt="cooltext375654328393844">
+          <hr class="barra2">
+          <a href="magnet:?xt=urn:btih:c05b83342b77f663c9cb8ca0cc279e2b0b1610f6" target="_blank" class="opcion uno"></a>
+          <a href="magnet:?xt=urn:btih:b3643f36a44230051a6efe4c05854e241bea7634" target="_blank" class="opcion dos"></a>
+          <a href="magnet:?xt=urn:btih:b3643f36a44230051a6efe4c05854e241bea7634" target="_blank" class="opcion tres"></a>
+        </div>
+        <div class="nieto">
+          <h2>Sinopsis</h2>
+          <hr class="barra2">
+          <a>Candela cometió el error de pensar que el ascensor social solo funciona en una dirección, la de subida. Y ahora, tras un traumático e inesperado divorcio, pierde su trabajo en un colegio de élite. Por eso Candela tiene que volver al barrio del que salió y pedir ayuda a su hermana y su padre, esos a los que lleva años mirando por encima del hombro. Es hora de recolocar las piezas en el tablero, empezar de cero y buscar una segunda oportunidad. Pero la única que encuentra es dar clases en su antiguo instituto a estudiantes con problemas de integración. Pasa de la crème de la crème, a la crème de la mediocridad. Lo que Candela no se espera es que con ellos aprenderá que lo importante no es quién fuiste ayer, sino quién eres hoy; que un grupo de perdedores por los que nadie da un duro pueden acabar siendo campeones de España; y que, en el ajedrez, como en la vida, no importa si eres rey o peón, porque al final de la partida, ambos acaban en la misma caja.</a>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="hijo">
+      <p><samp>Campeonex</samp></p><a href="#demo8"><img class="boton caratula" src="https://pics.filmaffinity.com/campeonex-966482082-mmed.jpg" alt="campeonex-966482082-mmed"></a>
+    </div>
+    <div id="demo8" class="modalmask" style="color:#000000;">
+      <div align="center" class="modalbox movedown" style="width:auto;">
+        <h2>Campeonex</h2><a href="#" class="btn-cerrar">X</a>
+        <hr class="barra1">
+        <img class="img_peli" src="https://pics.filmaffinity.com/campeonex-966482082-mmed.jpg" alt="campeonex-966482082-mmed">
+        <hr class="barra1">
+       
+        <a style="font-size:14px; font-family:'Kanit', sans-serif; margin-right: 20px;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z" fill="white"></path>
+    </svg> 2023
+</a>
+<a style="font-size:14px; font-family:'Kanit', sans-serif; margin-right: 20px;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <g fill="none">
+            <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle>
+            <path d="M15 16l-2.414-2.414A2 2 0 0 1 12 12.172V6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+    </svg> 2h 04m
+</a>
+        
+<a style="font-size:14px; font-family:'Kanit', sans-serif;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <path d="M20 8h-5.612l1.123-3.367c.202-.608.1-1.282-.275-1.802S14.253 2 13.612 2H12c-.297 0-.578.132-.769.36L6.531 8H4c-1.103 0-2 .897-2 2v9c0 1.103.897 2 2 2h13.307a2.01 2.01 0 0 0 1.873-1.298l2.757-7.351A1 1 0 0 0 22 12v-2c0-1.103-.897-2-2-2zM4 10h2v9H4v-9zm16 1.819L17.307 19H8V9.362L12.468 4h1.146l-1.562 4.683A.998.998 0 0 0 13 10h7v1.819z" fill="white"></path>
+    </svg> 5'7
+</a>
+        
+        <hr class="barra1">
+        <div class="nieto">
+          <img class="boton servidores" src="https://i.ibb.co/tP0BmYD/cooltext375654328393844.png" alt="cooltext375654328393844">
+          <hr class="barra2">
+          <a href="magnet:?xt=urn:btih:BB7A04352F08B38405465D65BB74BC3B8BDBE04B" target="_blank" class="opcion uno"></a>
+          <a href="magnet:?xt=urn:btih:BB7A04352F08B38405465D65BB74BC3B8BDBE04B" target="_blank" class="opcion dos"></a>
+          <a href="magnet:?xt=urn:btih:BB7A04352F08B38405465D65BB74BC3B8BDBE04B" target="_blank" class="opcion tres"></a>
+        </div>
+        <div class="nieto">
+          <h2>Sinopsis</h2>
+          <hr class="barra2">
+          <a>Nuestro equipo de "campeones" abandona el baloncesto para adentrarse por error en el fascinante mundo del atletismo de la mano de una entrenadora novata. Entre las duras exigencias de la nueva disciplina y la sorprendente capacidad de la entrenadora para atraer todo tipo de desgracias y calamidades, todo acabará saliendo del revés.</a>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="hijo">
+      <p><samp>John Wick 4</samp></p><a href="#demo7"><img class="boton caratula" src="https://pics.filmaffinity.com/john_wick_chapter_4-101402041-mmed.jpg" alt="john_wick_chapter_4-101402041-mmed"></a>
+    </div>
+    <div id="demo7" class="modalmask" style="color:#000000;">
+      <div align="center" class="modalbox movedown" style="width:auto;">
+        <h2>John Wick 4</h2><a href="#" class="btn-cerrar">X</a>
+        <hr class="barra1">
+        <img class="img_peli" src="https://pics.filmaffinity.com/john_wick_chapter_4-101402041-mmed.jpg" alt="john_wick_chapter_4-101402041-mmed">
+        <hr class="barra1">
+        
+        <a style="font-size:14px; font-family:'Kanit', sans-serif; margin-right: 20px;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z" fill="white"></path>
+    </svg> 2023
+</a>
+<a style="font-size:14px; font-family:'Kanit', sans-serif; margin-right: 20px;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <g fill="none">
+            <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle>
+            <path d="M15 16l-2.414-2.414A2 2 0 0 1 12 12.172V6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+    </svg> 2h 46m
+</a>
+        
+<a style="font-size:14px; font-family:'Kanit', sans-serif;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <path d="M20 8h-5.612l1.123-3.367c.202-.608.1-1.282-.275-1.802S14.253 2 13.612 2H12c-.297 0-.578.132-.769.36L6.531 8H4c-1.103 0-2 .897-2 2v9c0 1.103.897 2 2 2h13.307a2.01 2.01 0 0 0 1.873-1.298l2.757-7.351A1 1 0 0 0 22 12v-2c0-1.103-.897-2-2-2zM4 10h2v9H4v-9zm16 1.819L17.307 19H8V9.362L12.468 4h1.146l-1.562 4.683A.998.998 0 0 0 13 10h7v1.819z" fill="white"></path>
+    </svg> 6'7
+</a>
+        
+        <hr class="barra1">
+        <div class="nieto">
+          <img class="boton servidores" src="https://i.ibb.co/tP0BmYD/cooltext375654328393844.png" alt="cooltext375654328393844">
+          <hr class="barra2">
+          <a href="magnet:?xt=urn:btih:BB7A04352F08B38405465D65BB74BC3B8BDBE04B" target="_blank" class="opcion uno"></a>
+          <a href="magnet:?xt=urn:btih:BB7A04352F08B38405465D65BB74BC3B8BDBE04B" target="_blank" class="opcion dos"></a>
+          <a href="magnet:?xt=urn:btih:BB7A04352F08B38405465D65BB74BC3B8BDBE04B" target="_blank" class="opcion tres"></a>
+        </div>
+        <div class="nieto">
+          <h2>Sinopsis</h2>
+          <hr class="barra2">
+          <a>John Wick, legendario asesino retirado, vuelve de nuevo a la acción impulsado por una incontrolable búsqueda de venganza. Al tener que luchar contra asesinos sedientos de sangre que le persiguen, John tendrá que llevar sus habilidades al límite si quiere salir esta vez con vida.</a>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="hijo">
+      <p><samp>Rebel Moon (Parte 1): La niña del fuego</samp></p><a href="#demo6"><img class="boton caratula" src="https://pics.filmaffinity.com/rebel_moon_a_child_of_fire-103203161-large.jpg" alt="rebel_moon_a_child_of_fire-103203161-large"></a>
+    </div>
+    <div id="demo6" class="modalmask" style="color:#000000;">
+      <div align="center" class="modalbox movedown" style="width:auto;">
+        <h2>Rebel Moon (Parte 1): La niña del fuego</h2><a href="#" class="btn-cerrar">X</a>
+        <hr class="barra1">
+        <img class="img_peli" src="https://pics.filmaffinity.com/rebel_moon_a_child_of_fire-103203161-large.jpg" alt="rebel_moon_a_child_of_fire-103203161-large">
+        <hr class="barra1">
+        
+        <a style="font-size:14px; font-family:'Kanit', sans-serif; margin-right: 20px;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z" fill="white"></path>
+    </svg> 2023
+</a>
+<a style="font-size:14px; font-family:'Kanit', sans-serif; margin-right: 20px;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <g fill="none">
+            <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle>
+            <path d="M15 16l-2.414-2.414A2 2 0 0 1 12 12.172V6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+    </svg> 2h 05m
+</a>
+        
+<a style="font-size:14px; font-family:'Kanit', sans-serif;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <path d="M20 8h-5.612l1.123-3.367c.202-.608.1-1.282-.275-1.802S14.253 2 13.612 2H12c-.297 0-.578.132-.769.36L6.531 8H4c-1.103 0-2 .897-2 2v9c0 1.103.897 2 2 2h13.307a2.01 2.01 0 0 0 1.873-1.298l2.757-7.351A1 1 0 0 0 22 12v-2c0-1.103-.897-2-2-2zM4 10h2v9H4v-9zm16 1.819L17.307 19H8V9.362L12.468 4h1.146l-1.562 4.683A.998.998 0 0 0 13 10h7v1.819z" fill="white"></path>
+    </svg> 5'0
+</a>
+        
+        <hr class="barra1">
+        <div class="nieto">
+          <img class="boton servidores" src="https://i.ibb.co/tP0BmYD/cooltext375654328393844.png" alt="cooltext375654328393844">
+          <hr class="barra2">
+          <a href="magnet:?xt=urn:btih:BB7A04352F08B38405465D65BB74BC3B8BDBE04B" target="_blank" class="opcion uno"></a>
+          <a href="magnet:?xt=urn:btih:BB7A04352F08B38405465D65BB74BC3B8BDBE04B" target="_blank" class="opcion dos"></a>
+          <a href="magnet:?xt=urn:btih:BB7A04352F08B38405465D65BB74BC3B8BDBE04B" target="_blank" class="opcion tres"></a>
+        </div>
+        <div class="nieto">
+          <h2>Sinopsis</h2>
+          <hr class="barra2">
+          <a>Cuando una pacífica colonia en los confines de la galaxia se ve amenazada por un poder tiránico, su mejor baza para sobrevivir es la misteriosa Kora. Esta reúne a un grupo dispuesto a luchar, formado por forasteros, insurgentes, campesinos y huérfanos de guerra de varios planetas unidos por una causa común: la redención y la venganza. Mientras la sombra de todo un reino se cierne sobre la más improbable de las lunas, se libra una batalla por el destino de una galaxia y se forja un nuevo ejército de héroes.</a>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="hijo">
+      <p><samp>Rebel Moon (Parte dos): La guerrera que deja marcas</samp></p><a href="#demo5"><img class="boton caratula" src="https://pics.filmaffinity.com/rebel_moon_part_two_the_scargiver-347614416-mmed.jpg" alt="rebel_moon_part_two_the_scargiver-347614416-mmed"></a>
+    </div>
+    <div id="demo5" class="modalmask" style="color:#000000;">
+      <div align="center" class="modalbox movedown" style="width:auto;">
+        <h2>Rebel Moon (Parte dos): La guerrera que deja marcas</h2><a href="#" class="btn-cerrar">X</a>
+        <hr class="barra1">
+        <img class="img_peli" src="https://pics.filmaffinity.com/rebel_moon_part_two_the_scargiver-347614416-mmed.jpg" alt="rebel_moon_part_two_the_scargiver-347614416-mmed">
+        <hr class="barra1">
+        
+        <a style="font-size:14px; font-family:'Kanit', sans-serif; margin-right: 20px;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z" fill="white"></path>
+    </svg> 2024
+</a>
+<a style="font-size:14px; font-family:'Kanit', sans-serif; margin-right: 20px;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <g fill="none">
+            <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle>
+            <path d="M15 16l-2.414-2.414A2 2 0 0 1 12 12.172V6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+    </svg> 1h 55m
+</a>
+        
+<a style="font-size:14px; font-family:'Kanit', sans-serif;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <path d="M20 8h-5.612l1.123-3.367c.202-.608.1-1.282-.275-1.802S14.253 2 13.612 2H12c-.297 0-.578.132-.769.36L6.531 8H4c-1.103 0-2 .897-2 2v9c0 1.103.897 2 2 2h13.307a2.01 2.01 0 0 0 1.873-1.298l2.757-7.351A1 1 0 0 0 22 12v-2c0-1.103-.897-2-2-2zM4 10h2v9H4v-9zm16 1.819L17.307 19H8V9.362L12.468 4h1.146l-1.562 4.683A.998.998 0 0 0 13 10h7v1.819z" fill="white"></path>
+    </svg> 4'6
+</a>
+        
+        <hr class="barra1">
+        <div class="nieto">
+          <img class="boton servidores" src="https://i.ibb.co/tP0BmYD/cooltext375654328393844.png" alt="cooltext375654328393844">
+          <hr class="barra2">
+          <a href="magnet:?xt=urn:btih:a2dd1ad742c1c3f1d801bdf90fd9467bc3059b22" target="_blank" class="opcion uno"></a>
+          <a href="magnet:?xt=urn:btih:32455cd7ffa7c6ae12e994a27b10c705e1e0c979" target="_blank" class="opcion dos"></a>
+          <a href="magnet:?xt=urn:btih:2bf0a9ae82c682c2baddaddaa74746ccd08d962e" target="_blank" class="opcion tres"></a>
+        </div>
+        <div class="nieto">
+          <h2>Sinopsis</h2>
+          <hr class="barra2">
+          <a>Los rebeldes se preparan para luchar contra Mundomadre mientras se forjan vínculos inquebrantables, surgen nuevos héroes y se crean las leyendas. Secuela de 'Rebel Moon (Parte uno): La niña del fuego'.</a>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="hijo">
+      <p><samp>Oppenheimer</samp></p><a href="#demo4"><img class="boton caratula" src="https://pics.filmaffinity.com/oppenheimer-828933592-mmed.jpg" alt="oppenheimer-828933592-mmed"></a>
+    </div>
+    <div id="demo4" class="modalmask" style="color:#000000;">
+      <div align="center" class="modalbox movedown" style="width:auto;">
+        <h2>Oppenheimer</h2><a href="#" class="btn-cerrar">X</a>
+        <hr class="barra1">
+        <img class="img_peli" src="https://pics.filmaffinity.com/oppenheimer-828933592-mmed.jpg" alt="oppenheimer-828933592-mmed">
+        <hr class="barra1">
+        
+        <a style="font-size:14px; font-family:'Kanit', sans-serif; margin-right: 20px;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z" fill="white"></path>
+    </svg> 2023
+</a>
+<a style="font-size:14px; font-family:'Kanit', sans-serif; margin-right: 20px;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <g fill="none">
+            <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle>
+            <path d="M15 16l-2.414-2.414A2 2 0 0 1 12 12.172V6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+    </svg> 3h
+</a>
+        
+<a style="font-size:14px; font-family:'Kanit', sans-serif;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <path d="M20 8h-5.612l1.123-3.367c.202-.608.1-1.282-.275-1.802S14.253 2 13.612 2H12c-.297 0-.578.132-.769.36L6.531 8H4c-1.103 0-2 .897-2 2v9c0 1.103.897 2 2 2h13.307a2.01 2.01 0 0 0 1.873-1.298l2.757-7.351A1 1 0 0 0 22 12v-2c0-1.103-.897-2-2-2zM4 10h2v9H4v-9zm16 1.819L17.307 19H8V9.362L12.468 4h1.146l-1.562 4.683A.998.998 0 0 0 13 10h7v1.819z" fill="white"></path>
+    </svg> 7'4
+</a>
+        
+        <hr class="barra1">
+        <div class="nieto">
+          <img class="boton servidores" src="https://i.ibb.co/tP0BmYD/cooltext375654328393844.png" alt="cooltext375654328393844">
+          <hr class="barra2">
+          <a href="magnet:?xt=urn:btih:BB7A04352F08B38405465D65BB74BC3B8BDBE04B" target="_blank" class="opcion uno"></a>
+          <a href="magnet:?xt=urn:btih:BB7A04352F08B38405465D65BB74BC3B8BDBE04B" target="_blank" class="opcion dos"></a>
+          <a href="magnet:?xt=urn:btih:BB7A04352F08B38405465D65BB74BC3B8BDBE04B" target="_blank" class="opcion tres"></a>
+        </div>
+        <div class="nieto">
+          <h2>Sinopsis</h2>
+          <hr class="barra2">
+          <a>En tiempos de guerra, el brillante físico estadounidense Julius Robert Oppenheimer, al frente del 'Proyecto Manhattan', lidera los ensayos nucleares para construir la bomba atómica para su país. Impactado por su poder destructivo, Oppenheimer se cuestiona las consecuencias morales de su creación. Desde entonces y el resto de su vida, se opondría firmemente al uso de armas nucleares.</a>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="hijo">
+      <p><samp>Pobres criaturas</samp></p><a href="#demo3"><img class="boton caratula" src="https://pics.filmaffinity.com/poor_things-235700969-mmed.jpg" alt="oppenheimer-828933592-mmed"></a>
+    </div>
+    <div id="demo3" class="modalmask" style="color:#000000;">
+      <div align="center" class="modalbox movedown" style="width:auto;">
+        <h2>Pobres criaturas</h2><a href="#" class="btn-cerrar">X</a>
+        <hr class="barra1">
+        <img class="img_peli" src="https://pics.filmaffinity.com/poor_things-235700969-mmed.jpg" alt="oppenheimer-828933592-mmed">
+        <hr class="barra1">
+        
+        <a style="font-size:14px; font-family:'Kanit', sans-serif; margin-right: 20px;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z" fill="white"></path>
+    </svg> 2023
+</a>
+<a style="font-size:14px; font-family:'Kanit', sans-serif; margin-right: 20px;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <g fill="none">
+            <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle>
+            <path d="M15 16l-2.414-2.414A2 2 0 0 1 12 12.172V6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+    </svg> 2h 21m
+</a>
+        
+<a style="font-size:14px; font-family:'Kanit', sans-serif;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <path d="M20 8h-5.612l1.123-3.367c.202-.608.1-1.282-.275-1.802S14.253 2 13.612 2H12c-.297 0-.578.132-.769.36L6.531 8H4c-1.103 0-2 .897-2 2v9c0 1.103.897 2 2 2h13.307a2.01 2.01 0 0 0 1.873-1.298l2.757-7.351A1 1 0 0 0 22 12v-2c0-1.103-.897-2-2-2zM4 10h2v9H4v-9zm16 1.819L17.307 19H8V9.362L12.468 4h1.146l-1.562 4.683A.998.998 0 0 0 13 10h7v1.819z" fill="white"></path>
+    </svg> 7'3
+</a>
+        
+        <hr class="barra1">
+        <div class="nieto">
+          <img class="boton servidores" src="https://i.ibb.co/tP0BmYD/cooltext375654328393844.png" alt="cooltext375654328393844">
+          <hr class="barra2">
+          <a href="magnet:?xt=urn:btih:4f0bb41a0784f6d4307aaa57f25fa5765d02d13e" target="_blank" class="opcion uno"></a>
+          <a href="magnet:?xt=urn:btih:e12219253fabe7d3212ffc144522b88b150f2ead" target="_blank" class="opcion dos"></a>
+          <a href="magnet:?xt=urn:btih:e12219253fabe7d3212ffc144522b88b150f2ead" target="_blank" class="opcion tres"></a>
+        </div>
+        <div class="nieto">
+          <h2>Sinopsis</h2>
+          <hr class="barra2">
+          <a>Bella Baxter es una joven revivida por el brillante y poco ortodoxo científico Dr. Godwin Baxter. Bajo la protección de Baxter, Bella está ansiosa por aprender. Hambrienta de la mundanidad que le falta, Bella se escapa con Duncan Wedderburn, un sofisticado y perverso abogado, en una aventura vertiginosa a través de los continentes. Libre de los prejuicios de su época, Bella se vuelve firme en su propósito de defender la igualdad y la liberación.</a>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="hijo">
+      <p><samp>Dune: Parte Dos</samp></p><a href="#demo2"><img class="boton caratula" src="https://pics.filmaffinity.com/dune_part_two-802143593-mmed.jpg" alt="oppenheimer-828933592-mmed"></a>
+    </div>
+    <div id="demo2" class="modalmask" style="color:#000000;">
+      <div align="center" class="modalbox movedown" style="width:auto;">
+        <h2>Dune: Parte Dos</h2><a href="#" class="btn-cerrar">X</a>
+        <hr class="barra1">
+        <img class="img_peli" src="https://pics.filmaffinity.com/dune_part_two-802143593-mmed.jpg" alt="oppenheimer-828933592-mmed">
+        <hr class="barra1">
+        
+        <a style="font-size:14px; font-family:'Kanit', sans-serif; margin-right: 20px;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z" fill="white"></path>
+    </svg> 2024
+</a>
+<a style="font-size:14px; font-family:'Kanit', sans-serif; margin-right: 20px;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <g fill="none">
+            <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle>
+            <path d="M15 16l-2.414-2.414A2 2 0 0 1 12 12.172V6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+    </svg> 2h 46m
+</a>
+        
+<a style="font-size:14px; font-family:'Kanit', sans-serif;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <path d="M20 8h-5.612l1.123-3.367c.202-.608.1-1.282-.275-1.802S14.253 2 13.612 2H12c-.297 0-.578.132-.769.36L6.531 8H4c-1.103 0-2 .897-2 2v9c0 1.103.897 2 2 2h13.307a2.01 2.01 0 0 0 1.873-1.298l2.757-7.351A1 1 0 0 0 22 12v-2c0-1.103-.897-2-2-2zM4 10h2v9H4v-9zm16 1.819L17.307 19H8V9.362L12.468 4h1.146l-1.562 4.683A.998.998 0 0 0 13 10h7v1.819z" fill="white"></path>
+    </svg> 7'8
+</a>
+        
+        <hr class="barra1">
+        <div class="nieto">
+          <img class="boton servidores" src="https://i.ibb.co/tP0BmYD/cooltext375654328393844.png" alt="cooltext375654328393844">
+          <hr class="barra2">
+          <a href="magnet:?xt=urn:btih:23797e65de4c6ddce5a95686ea3d478b2b48095b" target="_blank" class="opcion uno"></a>
+          <a href="magnet:?xt=urn:btih:eca99591be0c9d5961688422a1457671bb20b92f" target="_blank" class="opcion dos"></a>
+          <a href="magnet:?xt=urn:btih:9cf3225d39f3a46c34cc149101dd8560c574a21b" target="_blank" class="opcion tres"></a>
+        </div>
+        <div class="nieto">
+          <h2>Sinopsis</h2>
+          <hr class="barra2">
+          <a>Tras los sucesos de la primera parte acontecidos en el planeta Arrakis, el joven Paul Atreides se une a la tribu de los Fremen y comienza un viaje espiritual y marcial para convertirse en mesías, mientras intenta evitar el horrible pero inevitable futuro que ha presenciado: una Guerra Santa en su nombre, que se extiende por todo el universo conocido... Secuela de 'Dune' (2021).</a>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="hijo">
+      <p><samp>Napoleón</samp></p><a href="#demo1"><img class="boton caratula" src="https://pics.filmaffinity.com/napoleon-602820505-mmed.jpg" alt="oppenheimer-828933592-mmed"></a>
+    </div>
+    <div id="demo1" class="modalmask" style="color:#000000;">
+      <div align="center" class="modalbox movedown" style="width:auto;">
+        <h2>Napoleón</h2><a href="#" class="btn-cerrar">X</a>
+        <hr class="barra1">
+        <img class="img_peli" src="https://pics.filmaffinity.com/napoleon-602820505-mmed.jpg" alt="oppenheimer-828933592-mmed">
+        <hr class="barra1">
+        
+        <a style="font-size:14px; font-family:'Kanit', sans-serif; margin-right: 20px;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z" fill="white"></path>
+    </svg> 2023
+</a>
+<a style="font-size:14px; font-family:'Kanit', sans-serif; margin-right: 20px;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <g fill="none">
+            <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle>
+            <path d="M15 16l-2.414-2.414A2 2 0 0 1 12 12.172V6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+    </svg> 2h 38m
+</a>
+        
+<a style="font-size:14px; font-family:'Kanit', sans-serif;">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24">
+        <path d="M20 8h-5.612l1.123-3.367c.202-.608.1-1.282-.275-1.802S14.253 2 13.612 2H12c-.297 0-.578.132-.769.36L6.531 8H4c-1.103 0-2 .897-2 2v9c0 1.103.897 2 2 2h13.307a2.01 2.01 0 0 0 1.873-1.298l2.757-7.351A1 1 0 0 0 22 12v-2c0-1.103-.897-2-2-2zM4 10h2v9H4v-9zm16 1.819L17.307 19H8V9.362L12.468 4h1.146l-1.562 4.683A.998.998 0 0 0 13 10h7v1.819z" fill="white"></path>
+    </svg> 5'7
+</a>
+        
+        <hr class="barra1">
+        <div class="nieto">
+          <img class="boton servidores" src="https://i.ibb.co/tP0BmYD/cooltext375654328393844.png" alt="cooltext375654328393844">
+          <hr class="barra2">
+          <a href="magnet:?xt=urn:btih:8252ee257a19356002e1d89d607d1e91c0440010" target="_blank" class="opcion uno"></a>
+          <a href="magnet:?xt=urn:btih:886ecd1ea519a5bbf127e40b867464450229a958" target="_blank" class="opcion dos"></a>
+          <a href="magnet:?xt=urn:btih:0819a0d92fe96646bbdfee5b2e7052febd89b9d5" target="_blank" class="opcion tres"></a>
+        </div>
+        <div class="nieto">
+          <h2>Sinopsis</h2>
+          <hr class="barra2">
+          <a>Narra los orígenes del líder militar francés y su rápido e imparable ascenso de oficial del ejército a emperador de Francia. La historia se ve a través de la lente de la relación adictiva y volátil de Napoleón Bonaparte con su esposa y único amor verdadero, Josefina.</a>
+        </div>
+      </div>
+    </div>
+  
+ <script>
+    document.getElementById("search").addEventListener("keyup", function() {
+      var choice = this.value.toLowerCase();
+      var movies = document.querySelectorAll('.hijo');
+      
+      movies.forEach(function(movie) {
+        if (movie.textContent.toLowerCase().includes(choice)) {
+          movie.style.display = "inline-block";
+        } else {
+          movie.style.display = "none";
+        }
+      });
+
+      var padre = document.querySelector('.padre');
+      if (choice.length > 0) {
+        padre.querySelectorAll('hr, img.img_titulo1, input.buscador').forEach(function(element) {
+          element.classList.add('hidden');
+        });
+      } else {
+        padre.querySelectorAll('hr, img.img_titulo1, input.buscador').forEach(function(element) {
+          element.classList.remove('hidden');
+        });
+      }
+    });
+  </script>
+    
+</body>
+</html>
