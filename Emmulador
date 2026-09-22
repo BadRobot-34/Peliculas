@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <!-- 1. Prevenir gestos de zoom y reducciones de FPS -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>EmulatorJS Android</title>
+
+  <style>
+    /* 2. Optimizar canvas y evitar reescalados por software */
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      overflow: hidden;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    #game {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Reducir carga de la GPU al dibujar píxeles */
+    canvas {
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+    }
+  </style>
+
+  <!-- 3. Parche de frecuencia 44100 Hz y baja latencia para Android WebView -->
+  <script>
+    (function() {
+      const NativeAudioContext = window.AudioContext || window.webkitAudioContext;
+      if (NativeAudioContext) {
+        window.AudioContext = function(options) {
+          options = options || {};
+          options.latencyHint = 'interactive';
+          options.sampleRate = 44100; // Evita resampleo a 48000 Hz en el chip del teléfono
+          
+          const ctx = new NativeAudioContext(options);
+          window.emuAudioCtx = ctx;
+          return ctx;
+        };
+        window.AudioContext.prototype = NativeAudioContext.prototype;
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <div id="game"></div>
+
+  <!-- 4. Configuración de EmulatorJS cargando desde el dominio HTTPS virtual -->
+  <script>
+    EJS_player = '#game';
+    EJS_core = 'gba'; // Cambia el core si juegas a otra consola (snes, nes, etc.)
+    
+    // CAMBIA 'tu_rom.gba' POR EL NOMBRE EXACTO DE TU ARCHIVO EN ASSETS:
+    EJS_gameUrl = 'https://appassets.androidplatform.net/assets/tu_rom.gba'; 
+
+    // Optimización de motor y audio
+    EJS_threads = true;          // Activa multihilo (aprovecha COOP/COEP)
+    EJS_forceHiRes = false;      // Evita renderizar a resoluciones mayores
+    EJS_startOnLoaded = true;    // Inicia inmediatamente al cargar
+    EJS_FrameSkip = "auto";      // Salto dinámico si la CPU decae
+    EJS_audioLatency = 128;      // Incrementa el búfer de audio
+    
+    // Ruta a la carpeta data dentro de assets
+    EJS_pathtodata = 'https://appassets.androidplatform.net/assets/data/';
+  </script>
+
+  <!-- 5. Script principal de EmulatorJS servido localmente -->
+  <script src="https://appassets.androidplatform.net/assets/data/loader.js"></script>
+
+  <!-- 6. Desbloqueador y reanudador automático de AudioContext -->
+  <script>
+    function resumeAudio() {
+      if (window.emuAudioCtx && window.emuAudioCtx.state === 'suspended') {
+        window.emuAudioCtx.resume().then(() => {
+          console.log("AudioContext reanudado.");
+        });
+      }
+    }
+
+    window.addEventListener('touchstart', resumeAudio, { passive: true });
+    window.addEventListener('click', resumeAudio, { passive: true });
+
+    document.addEventListener('visibilitychange', function() {
+      if (!document.hidden) {
+        resumeAudio();
+      }
+    });
+  </script>
+</body>
+</html>
