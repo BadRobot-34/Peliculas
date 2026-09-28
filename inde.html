@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Catálogo de películas y estrenos">
+  <title>Películas</title>
+
+  <link rel="preconnect" href="[fonts.googleapis.com](https://fonts.googleapis.com)">
+  <link rel="preconnect" href="[fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
+  <link
+    rel="stylesheet"
+    href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap)"
+  >
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --fondo: #050505;
+      --superficie: #171717;
+      --superficie-2: #252525;
+      --texto: #f5f5f5;
+      --texto-secundario: #bdbdbd;
+      --acento: #74eaff;
+      --borde: #3d3d3d;
+      --radio: 12px;
+      --sombra: 0 18px 50px rgb(0 0 0 / 55%);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      background: var(--fondo);
+      color: var(--texto);
+      font-family: "Lato", system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    body.modal-abierto {
+      overflow: hidden;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .contenedor {
+      width: min(1200px, calc(100% - 32px));
+      margin-inline: auto;
+      padding-block: 24px 48px;
+    }
+
+    .cabecera {
+      display: grid;
+      justify-items: center;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .cabecera__imagen {
+      width: min(440px, 80vw);
+      height: auto;
+    }
+
+    .buscador {
+      width: min(600px, 100%);
+      padding: 13px 16px;
+      border: 2px solid var(--acento);
+      border-radius: var(--radio);
+      outline: none;
+      background: #fff;
+      color: #111;
+    }
+
+    .buscador:focus-visible {
+      box-shadow: 0 0 0 4px rgb(116 234 255 / 25%);
+    }
+
+    .estado {
+      min-height: 24px;
+      margin: -12px 0 20px;
+      color: var(--texto-secundario);
+      text-align: center;
+    }
+
+    .peliculas {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 24px;
+    }
+
+    .pelicula {
+      min-width: 0;
+    }
+
+    .pelicula__boton {
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .pelicula__titulo {
+      display: block;
+      min-height: 48px;
+      margin-bottom: 10px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .pelicula__caratula {
+      width: 100%;
+      aspect-ratio: 2 / 3;
+      object-fit: cover;
+      border: 2px solid var(--borde);
+      border-radius: var(--radio);
+      background: var(--superficie);
+      transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease;
+    }
+
+    .pelicula__boton:hover .pelicula__caratula,
+    .pelicula__boton:focus-visible .pelicula__caratula {
+      transform: translateY(-4px);
+      border-color: var(--acento);
+      box-shadow: 0 12px 30px rgb(0 0 0 / 45%);
+    }
+
+    .pelicula__boton:focus-visible {
+      outline: 3px solid var(--acento);
+      outline-offset: 5px;
+      border-radius: var(--radio);
+    }
+
+    .vacio {
+      grid-column: 1 / -1;
+      padding: 48px 16px;
+      color: var(--texto-secundario);
+      text-align: center;
+    }
+
+    .modal {
+      width: min(720px, calc(100% - 24px));
+      max-height: calc(100dvh - 32px);
+      padding: 0;
+      border: 1px solid var(--borde);
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--superficie);
+      color: var(--texto);
+      box-shadow: var(--sombra);
+    }
+
+    .modal::backdrop {
+      background: rgb(0 0 0 / 82%);
+      backdrop-filter: blur(3px);
+    }
+
+    .modal__contenido {
+      max-height: calc(100dvh - 32px);
+      overflow-y: auto;
+      padding: 24px;
+    }
+
+    .modal__cabecera {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .modal__titulo {
+      margin: 0;
+      font-size: clamp(1.35rem, 5vw, 2rem);
+    }
+
+    .modal__cerrar {
+      flex: 0 0 auto;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--borde);
+      border-radius: 50%;
+      background: var(--superficie-2);
+      color: #fff;
+      cursor: pointer;
+      font-size: 1.25rem;
+    }
+
+    .modal__cerrar:hover,
+    .modal__cerrar:focus-visible {
+      border-color: var(--acento);
+      color: var(--acento);
+    }
+
+    .modal__principal {
+      display: grid;
+      grid-template-columns: minmax(160px, 225px) 1fr;
+      gap: 24px;
+      align-items: start;
+      margin-top: 24px;
+    }
+
+    .modal__imagen {
+      width: 100%;
+      aspect-ratio: 2 / 3;
+      object-fit: cover;
+      border: 2px solid #fff;
+      border-radius: 8px;
+    }
+
+    .metadatos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 0 20px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .metadatos li {
+      padding: 7px 10px;
+      border: 1px solid var(--borde);
+      border-radius: 999px;
+      background: var(--superficie-2);
+      font-size: 0.9rem;
+    }
+
+    .sinopsis {
+      margin: 0;
+      color: #e4e4e4;
+    }
+
+    .acciones {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .accion {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 10px 16px;
+      border: 2px solid var(--acento);
+      border-radius: 9px;
+      color: #061215;
+      background: var(--acento);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .accion:hover,
+    .accion:focus-visible {
+      filter: brightness(0.88);
+    }
+
+    @media (max-width: 560px) {
+      .contenedor {
+        width: min(100% - 20px, 1200px);
+      }
+
+      .peliculas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px 12px;
+      }
+
+      .pelicula__titulo {
+        min-height: 42px;
+        font-size: 0.9rem;
+      }
+
+      .modal__contenido {
+        padding: 18px;
+      }
+
+      .modal__principal {
+        grid-template-columns: 1fr;
+      }
+
+      .modal__imagen {
+        width: min(225px, 100%);
+        margin-inline: auto;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="contenedor">
+    <header class="cabecera">
+      <img
+        class="cabecera__imagen"
+        src="[raw.githubusercontent.com](https://raw.githubusercontent.com/Sherpa47/Imagenes/main/Cabeceras/Estrenos.png)"
+        alt="Estrenos"
+        width="600"
+        height="150"
+      >
+
+      <label for="buscador" hidden>Buscar una película</label>
+      <input
+        id="buscador"
+        class="buscador"
+        type="search"
+        placeholder="Buscar por título, año o sinopsis..."
+        autocomplete="off"
+      >
+    </header>
+
+    <p id="estado" class="estado" role="status" aria-live="polite"></p>
+    <section id="peliculas" class="peliculas" aria-label="Catálogo de películas"></section>
+  </main>
+
+  <dialog id="modal" class="modal" aria-labelledby="modal-titulo">
+    <article class="modal__contenido">
+      <header class="modal__cabecera">
+        <h2 id="modal-titulo" class="modal__titulo"></h2>
+        <button
+          id="cerrar-modal"
+          class="modal__cerrar"
+          type="button"
+          aria-label="Cerrar ventana"
+        >
+          &times;
+        </button>
+      </header>
+
+      <div class="modal__principal">
+        <img id="modal-imagen" class="modal__imagen" src="" alt="">
+
+        <div>
+          <ul class="metadatos" aria-label="Información de la película">
+            <li id="modal-anio"></li>
+            <li id="modal-duracion"></li>
+            <li id="modal-nota"></li>
+          </ul>
+
+          <h3>Sinopsis</h3>
+          <p id="modal-sinopsis" class="sinopsis"></p>
+
+          <div id="modal-acciones" class="acciones"></div>
+        </div>
+      </div>
+    </article>
+  </dialog>
+
+  <script>
+    "use strict";
+
+    const peliculas = [
+      {
+        titulo: "El ser querido",
+        anio: 2026,
+        duracion: "2 h 15 min",
+        nota: "7,3",
+        imagen: "[pics.filmaffinity.com](https://pics.filmaffinity.com/el_ser_querido-751969963-mmed.jpg)",
+        sinopsis: "El aclamado director de cine Esteban Martínez es una leyenda tanto por sus películas como por un pasado marcado por la violencia y los excesos. En su nuevo proyecto ofrece un papel a su hija Emilia, lo que reabrirá viejas heridas.",
+        urlLegal: ""
+      },
+      {
+        titulo: "La Fiera",
+        anio: 2026,
+        duracion: "1 h 53 min",
+        nota: "6,0",
+        imagen: "[pics.filmaffinity.com](https://pics.filmaffinity.com/la_fiera-265804283-mmed.jpg)",
+        sinopsis: "La historia de Carlos Suárez, Darío Barrio y Álvaro Bultó, tres amigos unidos por su pasión por los deportes extremos y el salto BASE con traje de alas.",
+        urlLegal: ""
+      },
+      {
+        titulo: "Te van a matar",
+        anio: 2026,
+        duracion: "1 h 34 min",
+        nota: "6,0",
+        imagen: "[pics.filmaffinity.com](https://pics.filmaffinity.com/they_will_kill_you-681140728-large.jpg)",
+        sinopsis: "Una mujer acepta un trabajo como ama de llaves en un rascacielos de Nueva York sin conocer el historial de desapariciones del edificio.",
+        urlLegal: ""
+      },
+      {
+        titulo: "Una batalla tras otra",
+        anio: 2025,
+        duracion: "2 h 41 min",
+        nota: "7,0",
+        imagen: "[pics.filmaffinity.com](https://pics.filmaffinity.com/one_battle_after_another-992235034-mmed.jpg)",
+        sinopsis: "Un exrevolucionario se ve obligado a volver a la acción para enfrentarse a antiguos enemigos en un ambiente de tensión política y violencia militar.",
+        urlLegal: ""
+      },
+      {
+        titulo: "Los domingos",
+        anio: 2025,
+        duracion: "1 h 50 min",
+        nota: "7,4",
+        imagen: "[pics.filmaffinity.com](https://pics.filmaffinity.com/los_domingos-922871491-mmed.jpg)",
+        sinopsis: "Ainara, una joven de 17 años, sorprende a su familia al plantearse abrazar la vida de monja de clausura.",
+        urlLegal: ""
+      },
+      {
+        titulo: "Sirât",
+        anio: 2025,
+        duracion: "1 h 24 min",
+        nota: "6,2",
+        imagen: "[pics.filmaffinity.com](https://pics.filmaffinity.com/sirat-867910558-mmed.jpg)",
+        sinopsis: "Un hombre y su hijo llegan a una rave en Marruecos buscando a una joven desaparecida y siguen a un grupo hacia una última fiesta en el desierto.",
+        urlLegal: ""
+      },
+      {
+        titulo: "La infiltrada",
+        anio: 2024,
+        duracion: "1 h 58 min",
+        nota: "7,0",
+        imagen: "[pics.filmaffinity.com](https://pics.filmaffinity.com/la_infiltrada-537503432-mmed.jpg)",
+        sinopsis: "Una agente de la Policía Nacional se infiltra durante años en ETA con el objetivo de desarticular el comando Donosti.",
+        urlLegal: ""
+      },
+      {
+        titulo: "El 47",
+        anio: 2024,
+        duracion: "1 h 50 min",
+        nota: "7,1",
+        imagen: "[pics.filmaffinity.com](https://pics.filmaffinity.com/el_47-838476618-mmed.jpg)",
+        sinopsis: "En 1978, el conductor Manolo Vital se apropia del autobús de la línea 47 para demostrar que podía llegar al barrio barcelonés de Torre Baró.",
+        urlLegal: ""
+      },
+      {
+        titulo: "Gladiator II",
+        anio: 2024,
+        duracion: "2 h 28 min",
+        nota: "5,9",
+        imagen: "[pics.filmaffinity.com](https://pics.filmaffinity.com/gladiator_ii-342897565-large.jpg)",
+        sinopsis: "Lucio es esclavizado tras la conquista de Numidia y deberá combatir para alcanzar el Coliseo y tener una oportunidad de vengarse.",
+        urlLegal: ""
+      },
+      {
+        titulo: "Deadpool y Lobezno",
+        anio: 2024,
+        duracion: "2 h 7 min",
+        nota: "7,0",
+        imagen: "[pics.filmaffinity.com](https://pics.filmaffinity.com/deadpool_wolverine-864471588-mmed.jpg)",
+        sinopsis: "Wade Wilson debe volver a actuar cuando su mundo se enfrenta a una amenaza existencial, acompañado por un Lobezno reacio.",
+        urlLegal: ""
+      },
+      {
+        titulo: "El ministerio de la Guerra Sucia",
+        anio: 2024,
+        duracion: "2 h",
+        nota: "5,7",
+        imagen: "[pics.filmaffinity.com](https://pics.filmaffinity.com/the_ministry_of_ungentlemanly_warfare-905775707-mmed.jpg)",
+        sinopsis: "El ejército británico recluta a un grupo de soldados de élite para atacar a los nazis tras las líneas enemigas durante la Segunda Guerra Mundial.",
+        urlLegal: ""
+      },
+      {
+        titulo: "Del revés 2 (Inside Out 2)",
+        anio: 2024,
+        duracion: "1 h 36 min",
+        nota: "7,3",
+        imagen: "[pics.filmaffinity.com](https://pics.filmaffinity.com/inside_out_2-365634749-mmed.jpg)",
+        sinopsis: "Riley entra en la adolescencia y en su mente aparecen nuevas emociones, encabezadas por Ansiedad.",
+        urlLegal: ""
+      },
+      {
+        titulo: "El reino del planeta de los simios",
+        anio: 2024,
+        duracion: "2 h 15 min",
+        nota: "6,1",
+        imagen: "[pics.filmaffinity.com](https://pics.filmaffinity.com/kingdom_of_the_planet_of_the_apes-598062850-large.jpg)",
+        sinopsis: "Generaciones después de César, un joven simio emprende un viaje que determinará el futuro de simios y humanos.",
+        urlLegal: ""
+      },
+      {
+        titulo: "Furiosa: De la saga Mad Max",
+        anio: 2024,
+        duracion: "2 h 28 min",
+        nota: "6,9",
+        imagen: "[pics.filmaffinity.com](https://pics.filmaffinity.com/furiosa_a_mad_max_saga-599306128-mmed.jpg)",
+        sinopsis: "La joven Furiosa es arrebatada de su hogar y debe sobrevivir mientras busca la manera de regresar.",
+        urlLegal: ""
+      },
+      {
+        titulo: "Menudas piezas",
+        anio: 2024,
+        duracion: "1 h 38 min",
+        nota: "5,7",
+        imagen: "[pics.filmaffinity.com](https://pics.filmaffinity.com/menudas_piezas-781090336-mmed.jpg)",
+        sinopsis: "Tras perder su trabajo, Candela regresa a su antiguo barrio y empieza a enseñar ajedrez a estudiantes con problemas de integración.",
+        urlLegal: ""
+      },
+      {
+        titulo: "Campeonex",
+        anio: 2023,
+        duracion: "2 h 4 min",
+        nota: "5,7",
+        imagen: "[pics.filmaffinity.com](https://pics.filmaffinity.com/campeonex-966482082-mmed.jpg)",
+        sinopsis: "El equipo abandona el baloncesto y se adentra por error en el mundo del atletismo con una entrenadora novata.",
+        urlLegal: ""
+      },
+      {
+        titulo: "John Wick 4",
+        anio: 2023,
+        duracion: "2 h 46 min",
+        nota: "6,7",
+        imagen: "[pics.filmaffinity.com](https://pics.filmaffinity.com/john_wick_chapter_4-101402041-mmed.jpg)",
+        sinopsis: "John Wick busca una forma de derrotar a la Alta Mesa mientras se enfrenta a enemigos cada vez más poderosos.",
+        urlLegal: ""
+      },
+      {
+        titulo: "Oppenheimer",
+        anio: 2023,
+        duracion: "3 h",
+        nota: "7,4",
+        imagen: "[pics.filmaffinity.com](https://pics.filmaffinity.com/oppenheimer-828933592-mmed.jpg)",
+        sinopsis: "El físico J. Robert Oppenheimer dirige el Proyecto Manhattan y afronta las consecuencias morales de la creación de la bomba atómica.",
+        urlLegal: ""
+      },
+      {
+        titulo: "Pobres criaturas",
+        anio: 2023,
+        duracion: "2 h 21 min",
+        nota: "7,3",
+        imagen: "[pics.filmaffinity.com](https://pics.filmaffinity.com/poor_things-235700969-mmed.jpg)",
+        sinopsis: "Bella Baxter emprende una aventura de descubrimiento personal libre de los prejuicios de su época.",
+        urlLegal: ""
+      },
+      {
+        titulo: "Dune: Parte Dos",
+        anio: 2024,
+        duracion: "2 h 46 min",
+        nota: "7,8",
+        imagen: "[pics.filmaffinity.com](https://pics.filmaffinity.com/dune_part_two-802143593-mmed.jpg)",
+        sinopsis: "Paul Atreides se une a los Fremen y trata de evitar el futuro devastador que ha presenciado.",
+        urlLegal: ""
+      },
+      {
+        titulo: "Napoleón",
+        anio: 2023,
+        duracion: "2 h 38 min",
+        nota: "5,7",
+        imagen: "[pics.filmaffinity.com](https://pics.filmaffinity.com/napoleon-602820505-mmed.jpg)",
+        sinopsis: "Relato del ascenso de Napoleón Bonaparte y de su relación volátil con Josefina.",
+        urlLegal: ""
+      }
+    ];
+
+    const elementos = {
+      lista: document.querySelector("#peliculas"),
+      buscador: document.querySelector("#buscador"),
+      estado: document.querySelector("#estado"),
+      modal: document.querySelector("#modal"),
+      cerrar: document.querySelector("#cerrar-modal"),
+      titulo: document.querySelector("#modal-titulo"),
+      imagen: document.querySelector("#modal-imagen"),
+      anio: document.querySelector("#modal-anio"),
+      duracion: document.querySelector("#modal-duracion"),
+      nota: document.querySelector("#modal-nota"),
+      sinopsis: document.querySelector("#modal-sinopsis"),
+      acciones: document.querySelector("#modal-acciones")
+    };
+
+    const normalizar = (texto) =>
+      String(texto)
+        .normalize("NFD")
+        .replace(/\p{Diacritic}/gu, "")
+        .toLocaleLowerCase("es")
+        .trim();
+
+    function crearTarjeta(pelicula, indice) {
+      const articulo = document.createElement("article");
+      articulo.className = "pelicula";
+
+      const boton = document.createElement("button");
+      boton.className = "pelicula__boton";
+      boton.type = "button";
+      boton.dataset.indice = indice;
+      boton.setAttribute("aria-label", `Ver información de ${pelicula.titulo}`);
+
+      const titulo = document.createElement("span");
+      titulo.className = "pelicula__titulo";
+      titulo.textContent = pelicula.titulo;
+
+      const imagen = document.createElement("img");
+      imagen.className = "pelicula__caratula";
+      imagen.src = pelicula.imagen;
+      imagen.alt = `Carátula de ${pelicula.titulo}`;
+      imagen.loading = "lazy";
+      imagen.decoding = "async";
+      imagen.width = 300;
+      imagen.height = 450;
+
+      boton.append(titulo, imagen);
+      articulo.append(boton);
+
+      return articulo;
+    }
+
+    function renderizar(lista) {
+      elementos.lista.replaceChildren();
+
+      if (lista.length === 0) {
+        const mensaje = document.createElement("p");
+        mensaje.className = "vacio";
+        mensaje.textContent = "No se encontraron películas.";
+        elementos.lista.append(mensaje);
+        elementos.estado.textContent = "0 resultados";
+        return;
+      }
+
+      const fragmento = document.createDocumentFragment();
+
+      lista.forEach(({ pelicula, indice }) => {
+        fragmento.append(crearTarjeta(pelicula, indice));
+      });
+
+      elementos.lista.append(fragmento);
+      elementos.estado.textContent =
+        `${lista.length} ${lista.length === 1 ? "película" : "películas"}`;
+    }
+
+    function abrirModal(pelicula) {
+      elementos.titulo.textContent = pelicula.titulo;
+      elementos.imagen.src = pelicula.imagen;
+      elementos.imagen.alt = `Carátula de ${pelicula.titulo}`;
+      elementos.anio.textContent = `Año: ${pelicula.anio}`;
+      elementos.duracion.textContent = `Duración: ${pelicula.duracion}`;
+      elementos.nota.textContent = `Nota: ${pelicula.nota}`;
+      elementos.sinopsis.textContent = pelicula.sinopsis;
+      elementos.acciones.replaceChildren();
+
+      if (pelicula.urlLegal) {
+        const enlace = document.createElement("a");
+        enlace.className = "accion";
+        enlace.href = pelicula.urlLegal;
+        enlace.target = "_blank";
+        enlace.rel = "noopener noreferrer";
+        enlace.textContent = "Ver en plataforma";
+        elementos.acciones.append(enlace);
+      }
+
+      elementos.modal.showModal();
+      document.body.classList.add("modal-abierto");
+    }
+
+    function cerrarModal() {
+      elementos.modal.close();
+    }
+
+    function filtrarPeliculas() {
+      const termino = normalizar(elementos.buscador.value);
+
+      const resultados = peliculas
+        .map((pelicula, indice) => ({ pelicula, indice }))
+        .filter(({ pelicula }) => {
+          const contenido = [
+            pelicula.titulo,
+            pelicula.anio,
+            pelicula.duracion,
+            pelicula.sinopsis
+          ].join(" ");
+
+          return normalizar(contenido).includes(termino);
+        });
+
+      renderizar(resultados);
+    }
+
+    elementos.lista.addEventListener("click", (evento) => {
+      const boton = evento.target.closest("[data-indice]");
+
+      if (!boton) {
+        return;
+      }
+
+      abrirModal(peliculas[Number(boton.dataset.indice)]);
+    });
+
+    elementos.buscador.addEventListener("input", filtrarPeliculas);
+    elementos.cerrar.addEventListener("click", cerrarModal);
+
+    elementos.modal.addEventListener("click", (evento) => {
+      if (evento.target === elementos.modal) {
+        cerrarModal();
+      }
+    });
+
+    elementos.modal.addEventListener("close", () => {
+      document.body.classList.remove("modal-abierto");
+      elementos.imagen.src = "";
+    });
+
+    renderizar(
+      peliculas.map((pelicula, indice) => ({ pelicula, indice }))
+    );
+  </script>
+</body>
+</html>
